@@ -218,8 +218,11 @@ def main():
 
                 changed = True
 
+        semanage_handle_destroy(sh)
+
     except Exception, e:
         # Casting a wider net on exceptions just in case
+        semanage_handle_destroy(sh)
         module.fail_json(msg='Failed to manage module %s: %s' % (name, str(e)))
 
     module.exit_json(changed=changed)
